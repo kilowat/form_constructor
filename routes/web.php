@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/form/show/{id}', [
+    'uses' => 'FormController@show',
+    'as' => 'form.show',
+]);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FormController@index');
