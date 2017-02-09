@@ -11,8 +11,7 @@
               <div class="input-group">
                 <span class="input-group-addon" id="basic-addon3">{{  $input->label }}:</span>
                 <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-              </div>
-            </div>
+             </div>
             @endforeach
           </div>
         @endforeach

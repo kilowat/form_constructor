@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Forms;
+use App\Models\Forms;
 use App\Models\InputGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
