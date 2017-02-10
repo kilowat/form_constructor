@@ -1,21 +1,17 @@
 @extends('form_app.layouts.master')
 @section('content')
-  <div class="row">
-    <div class="col-md-12">
-      <form action="">
-        @foreach($inputsGroup as $inputGroup)
-          <div class="panel panel-default">
-            <div class="panel-heading">{{ $inputGroup->name }}</div>
-            <div class="panel-body">
-              @foreach($inputGroup->inputs as $input)
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon3">{{  $input->label }}:</span>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-             </div>
-            @endforeach
-          </div>
+  @foreach($nodes as $node)
+    <div class="section_row">
+      <h1>{{ $node->name }}</h1>
+      @foreach($node->inputs as $input)
+        @include('form_app.helper.inputs', $input)
+      @endforeach
+      @foreach($node->children as $child)
+        <h2>{{ $child->name }}</h2>
+        @foreach($child->inputs as $input)
+          @include('form_app.helper.inputs', $input)
         @endforeach
-      </form>
+      @endforeach
     </div>
-  </div>
+  @endforeach
 @endsection;

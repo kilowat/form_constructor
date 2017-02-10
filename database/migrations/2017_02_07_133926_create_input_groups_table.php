@@ -18,6 +18,7 @@ class CreateInputGroupsTable extends Migration
             NestedSet::columns($table);
             $table->increments('id');
             $table->string('name');
+            $table->integer('sort')->default(100);
             $table->timestamps();
         });
     }

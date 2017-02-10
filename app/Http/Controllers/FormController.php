@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Forms;
+use App\Models\Input;
 use App\Models\InputGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,10 +17,10 @@ class FormController extends Controller
         return view('form_app.pages.index', compact('forms'));
     }
 
-    public function show($id)
+    public function show($id, Input $inputs)
     {
-        $inputsGroup = InputGroup::with('inputs')->get();
+        $nodes = InputGroup::with('inputs')->get()->toTree();
 
-        return view('form_app.form.show', compact('inputsGroup'));
+        return view('form_app.form.show', compact('nodes'));
     }
 }
