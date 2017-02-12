@@ -24,7 +24,7 @@ class FormSeeder extends Seeder
         DB::table('input_types')->insert([
             ['code' => 'string', 'name' => 'Строка', 'created_at' => Carbon::now()],
             ['code' => 'list', 'name' => 'Список', 'created_at' => Carbon::now()],
-            ['code' => 'checkobx', 'name' => 'Флажки', 'created_at' => Carbon::now()],
+            ['code' => 'checkbox', 'name' => 'Флажки', 'created_at' => Carbon::now()],
             ['code' => 'number', 'name' => 'число', 'created_at' => Carbon::now()],
             ['code' => 'radio', 'name' => 'Радиокнопки', 'created_at' => Carbon::now()],
         ]);
@@ -77,6 +77,8 @@ class FormSeeder extends Seeder
             ['name' => 'height','label' => 'Высота потолков помщения, см', 'input_group_id' => 2, 'group_option_id' => 1, 'input_type_code' => 'string', 'created_at' => Carbon::now()],
             ['name' => 'flat_building','label' => 'Этаж помещения', 'input_group_id' => 2, 'group_option_id' => 1, 'input_type_code' => 'string', 'created_at' => Carbon::now()],
             ['name' => 'typ_heart','label' => 'Вид отопления', 'input_group_id' => 2, 'group_option_id' => 2, 'input_type_code' => 'list', 'created_at' => Carbon::now()],
+            ['name' => 'typ_heart2','label' => 'Тест чекбокс', 'input_group_id' => 2, 'group_option_id' => 2, 'input_type_code' => 'checkbox', 'created_at' => Carbon::now()],
+            ['name' => 'typ_heart4','label' => 'Тест чекбокс2', 'input_group_id' => 3, 'group_option_id' => 2, 'input_type_code' => 'checkbox', 'created_at' => Carbon::now()],
         ]);
 
         DB::table('forms_has_input_groups')->delete();

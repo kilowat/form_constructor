@@ -20,12 +20,12 @@ class CreateInputsTable extends Migration
 
             $table->unsignedInteger('input_group_id');
             $table->foreign('input_group_id')
-                ->references('id')->on('group_options')
+                ->references('id')->on('input_groups')
                 ->onDelete('cascade');
 
             $table->unsignedInteger('group_option_id');
             $table->foreign('group_option_id')
-                ->references('id')->on('input_groups')
+                ->references('id')->on('options')
                 ->onDelete('cascade');
 
             $table->string('input_type_code');

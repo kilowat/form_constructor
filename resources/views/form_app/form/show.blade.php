@@ -1,17 +1,30 @@
 @extends('form_app.layouts.master')
 @section('content')
+    <h1>{{ $title }}</h1>
   @foreach($nodes as $node)
     <div class="section_row">
-      <h1>{{ $node->name }}</h1>
-      @foreach($node->inputs as $input)
-        @include('form_app.helper.inputs', $input)
+      <h3>{{ $node->name }}</h3>
+      @foreach($node->inputs->chunk($node->column) as $inputRow)
+        <div class="row">
+          @foreach($inputRow as $input)
+          <div class="col-md-4">
+            @include('form_app.helper.inputs', $input)
+          </div>
+          @endforeach
+        </div>
       @endforeach
       @foreach($node->children as $child)
-        <h2>{{ $child->name }}</h2>
-        @foreach($child->inputs as $input)
-          @include('form_app.helper.inputs', $input)
+        <h4>{{ $child->name }}</h4>
+        @foreach($child->inputs->chunk($child->column) as $inputRow)
+          <div class="row">
+            @foreach($inputRow as $input)
+              <div class="col-md-4">
+                @include('form_app.helper.inputs', $input)
+              </div>
+            @endforeach
+          </div>
         @endforeach
       @endforeach
     </div>
   @endforeach
-@endsection;
+@endsection

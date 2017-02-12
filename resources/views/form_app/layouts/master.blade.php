@@ -15,7 +15,11 @@
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
   <![endif]-->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
+  <script src="/js/vue.min.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -28,8 +32,8 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Формы<span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Группы инпутов<span class="sr-only">(current)</span></a></li>
+          <li class="active"><a href="/">Формы<span class="sr-only">(current)</span></a></li>
+          <li><a href="{{ route('inputGroup.index') }}">Группы инпутов<span class="sr-only">(current)</span></a></li>
           <li><a href="#">Инпуты<span class="sr-only">(current)</span></a></li>
           <li><a href="#">Справочник option<span class="sr-only">(current)</span></a></li>
         </ul>

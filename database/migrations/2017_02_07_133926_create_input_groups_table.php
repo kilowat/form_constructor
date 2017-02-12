@@ -19,6 +19,8 @@ class CreateInputGroupsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('sort')->default(100);
+            $table->boolean('active')->default(true);
+            $table->integer('column')->default(1);
             $table->timestamps();
         });
     }
