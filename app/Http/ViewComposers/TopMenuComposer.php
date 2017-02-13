@@ -19,7 +19,7 @@ class TopMenuComposer
         $menuItems = [
             [
                 'text' => 'Формы',
-                'link' => route('form.index'),
+                'link' => '/',
                 'selected' => false,
             ],
             [
