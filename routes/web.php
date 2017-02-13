@@ -30,4 +30,9 @@ Route::get('/form/show/{id}', [
     'as' => 'form.show',
 ]);
 
-Route::get('/', 'FormController@index');
+Route::get('/', [
+    'uses' => 'FormController@index',
+    'as' => 'form.index',
+]);
+
+//Route::get('/', 'FormController@index');

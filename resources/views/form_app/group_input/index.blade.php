@@ -37,7 +37,6 @@
             <tr>
               <th>{{ $form->id }}</th>
               <td>
-                {{ str_repeat("-",$form->depth) }}
                 {{ $form->name }}
               </td>
               <td>

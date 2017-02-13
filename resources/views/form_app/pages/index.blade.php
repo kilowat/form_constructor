@@ -61,10 +61,18 @@
         <form action="{{ route('form.store') }}" method="post">
           {{ csrf_field() }}
         <div class="modal-body">
-            <div class="form-group">
-              <label for="recipient-name" class="control-label">Название:</label>
-              <input type="text" name="name" class="form-control" id="recipient-name">
-            </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Название:</label>
+            <input type="text" name="name" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="group" class="control-label">Выбери группы:</label>
+            <select name="group_id[]"  class="form-control" id="group_id" multiple="multiple">
+              @foreach($groups as $group)
+              <option value="{{ $group->id }}">{{ $group->name }}</option>
+              @endforeach
+            </select>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>

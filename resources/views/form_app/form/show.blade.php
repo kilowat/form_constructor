@@ -13,18 +13,6 @@
           @endforeach
         </div>
       @endforeach
-      @foreach($node->children as $child)
-        <h4>{{ $child->name }}</h4>
-        @foreach($child->inputs->chunk($child->column) as $inputRow)
-          <div class="row">
-            @foreach($inputRow as $input)
-              <div class="col-md-4">
-                @include('form_app.helper.inputs', $input)
-              </div>
-            @endforeach
-          </div>
-        @endforeach
-      @endforeach
     </div>
   @endforeach
 @endsection

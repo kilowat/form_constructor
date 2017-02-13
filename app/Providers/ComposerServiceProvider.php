@@ -2,24 +2,26 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
+use App\Http\ViewComposers\TopMenuComposer;
 use Illuminate\Support\Facades\View;
 
-class AppServiceProvider extends ServiceProvider
+class ComposerServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Bootstrap the application services.
      *
      * @return void
      */
     public function boot()
     {
-
+        View::composer(
+            'form_app.menu.top_menu', TopMenuComposer::class
+        );
     }
 
     /**
-     * Register any application services.
+     * Register the application services.
      *
      * @return void
      */
