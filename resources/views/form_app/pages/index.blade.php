@@ -39,7 +39,7 @@
             <td>{{ $form->name }}</td>
             <td>
               <span><a href="{{ route('form.show', $form->id) }}">Открыть</a></span> |
-              <span><a href="">Редактировать</a></span> |
+              <span><a href="{{ route('form.edit', $form->id) }}">Редактировать</a></span> |
               <span><a href="">Удалить</a></span>
             </td>
           </tr>

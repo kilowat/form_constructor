@@ -29,7 +29,14 @@ Route::get('/form/show/{id}', [
     'uses' => 'FormController@show',
     'as' => 'form.show',
 ]);
-
+Route::get('/form/edit/{id}', [
+    'uses' => 'FormController@edit',
+    'as' => 'form.edit',
+]);
+Route::post('/form/update}', [
+    'uses' => 'FormController@update',
+    'as' => 'form.update',
+]);
 Route::get('/', [
     'uses' => 'FormController@index',
     'as' => 'form.index',
