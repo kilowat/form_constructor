@@ -29,7 +29,7 @@ class TopMenuComposer
             ],
             [
                 'text' => 'Инпуты',
-                'link' => '#',
+                'link' => route('input.index'),
                 'selected' => false,
             ],
             [

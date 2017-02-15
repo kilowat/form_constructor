@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-12">
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#form-add">
-        Добавить форму
+        Добавить инпут
       </button>
     </div>
   </div>
@@ -22,6 +22,8 @@
           <tr>
             <th>id</th>
             <th>Название</th>
+            <th>value</th>
+            <th>Тип</th>
             <th>Действие</th>
           </tr>
           </thead>
@@ -29,9 +31,10 @@
           @foreach($forms as $form)
           <tr>
             <th>{{ $form->id }}</th>
+            <td>{{ $form->label }}</td>
             <td>{{ $form->name }}</td>
+            <td>{{ $form->input_type_code }}</td>
             <td>
-              <span><a href="{{ route('form.show', $form->id) }}">Открыть</a></span> |
               <span><a href="{{ route('form.edit', $form->id) }}">Редактировать</a></span> |
               <span><a href="">Удалить</a></span>
             </td>
@@ -49,7 +52,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+          <h4 class="modal-title" id="exampleModalLabel">Добавить инпут</h4>
         </div>
         <form action="{{ route('form.store') }}" method="post">
           {{ csrf_field() }}
@@ -57,14 +60,6 @@
           <div class="form-group">
             <label for="recipient-name" class="control-label">Название:</label>
             <input type="text" name="name" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="group" class="control-label">Выбери группы:</label>
-            <select name="group_id[]"  class="form-control" id="group_id" multiple="multiple">
-              @foreach($groups as $group)
-              <option value="{{ $group->id }}">{{ $group->name }}</option>
-              @endforeach
-            </select>
           </div>
         </div>
         <div class="modal-footer">

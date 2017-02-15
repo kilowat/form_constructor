@@ -15,10 +15,26 @@ Route::get('/input-group',[
     'uses' => 'GroupInputController@index',
     'as' => 'inputGroup.index'
 ]);
-
+Route::get('/input-group/show/{id}', [
+    'uses' => 'GroupInputController@shoe',
+    'as' => 'inputGroup.show'
+]);
+Route::get('/input-group/edit/{id}', [
+    'uses' => 'GroupInputController@edit',
+    'as' => 'inputGroup.edit'
+]);
+Route::post('/input-group/update', [
+    'uses' => 'GroupInputController@update',
+    'as' => 'inputGroup.update'
+]);
 Route::post('/input-group/store',[
     'uses' => 'GroupInputController@store',
     'as' => 'inputGroup.store'
+]);
+
+Route::get('/inputs', [
+    'uses' => 'InputController@index',
+    'as' => 'input.index'
 ]);
 
 Route::post('/form/store',[

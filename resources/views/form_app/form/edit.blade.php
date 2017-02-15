@@ -1,20 +1,8 @@
 @extends('form_app.layouts.master')
 @section('content')
-    <h1>Редактировать: {{ $form->name }}</h1>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    @if (session('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
+    <h3>Редактировать: {{ $form->name }}</h3>
+    @include ('form_app.errors.base')
+    @include('form_app.message.base')
     <form action="{{ route('form.update') }}" method="post">
         {{ csrf_field() }}
         <input type="hidden" name="id" value="{{ $form->id }}">

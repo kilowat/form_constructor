@@ -10,15 +10,8 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      @if (count($errors) > 0)
-        <div class="alert alert-danger">
-          <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
-      @endif
+      @include('form_app.errors.base')
+      @include('form_app.message.base')
       <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">
@@ -29,6 +22,7 @@
           <tr>
             <th>id</th>
             <th>Название</th>
+            <th>Сортировка</th>
             <th>Действие</th>
           </tr>
           </thead>
@@ -40,8 +34,11 @@
                 {{ $form->name }}
               </td>
               <td>
-                <span><a href="{{ route('form.show', $form->id) }}">Открыть</a></span> |
-                <span><a href="">Редактировать</a></span> |
+                {{ $form->sort }}
+              </td>
+              <td>
+                <span><a href="{{ route('inputGroup.show', $form->id) }}">Открыть</a></span> |
+                <span><a href="{{ route('inputGroup.edit', $form->id) }}">Редактировать</a></span> |
                 <span><a href="">Удалить</a></span>
               </td>
             </tr>
@@ -59,7 +56,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                     aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+          <h4 class="modal-title" id="exampleModalLabel">Создать</h4>
         </div>
         <form action="{{ route('inputGroup.store') }}" method="post">
           {{ csrf_field() }}
@@ -67,15 +64,6 @@
             <div class="form-group">
               <label for="recipient-name" class="control-label">Название:</label>
               <input type="text" name="name" class="form-control" id="recipient-name">
-            </div>
-            <div class="form-group">
-              <label for="recipient-name" class="control-label">Родительский раздел:</label>
-              <select class="form-control" name="parent_id" id="parent_id">
-                <option value="" default="default">Выбери родительскую группу</option>
-                @foreach($forms->toTree() as $form)
-                  <option value="{{ $form->id }}">{{ $form->name }}</option>
-                  @endforeach
-              </select>
             </div>
           </div>
           <div class="modal-footer">

@@ -9,7 +9,7 @@ class InputGroup extends Model
 {
     use NodeTrait;
 
-    protected $fillable = ['name', 'parent_id'];
+    protected $fillable = ['name', 'parent_id', 'sort'];
 
     public function inputs()
     {
