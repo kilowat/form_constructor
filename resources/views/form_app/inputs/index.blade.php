@@ -23,6 +23,7 @@
             <th>id</th>
             <th>Название</th>
             <th>value</th>
+            <th>Группа</th>
             <th>Тип</th>
             <th>Действие</th>
           </tr>
@@ -33,9 +34,10 @@
             <th>{{ $form->id }}</th>
             <td>{{ $form->label }}</td>
             <td>{{ $form->name }}</td>
+            <td>{{ $form->group->name }}</td>
             <td>{{ $form->input_type_code }}</td>
             <td>
-              <span><a href="{{ route('form.edit', $form->id) }}">Редактировать</a></span> |
+              <span><a href="{{ route('input.edit', $form->id) }}">Редактировать</a></span> |
               <span><a href="">Удалить</a></span>
             </td>
           </tr>
@@ -54,12 +56,40 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="exampleModalLabel">Добавить инпут</h4>
         </div>
-        <form action="{{ route('form.store') }}" method="post">
+        <form action="{{ route('input.store') }}" method="post">
           {{ csrf_field() }}
         <div class="modal-body">
           <div class="form-group">
-            <label for="recipient-name" class="control-label">Название:</label>
-            <input type="text" name="name" class="form-control" id="recipient-name">
+            <label for="recipient-label" class="control-label">Label:</label>
+            <input type="text" name="label" class="form-control" id="label">
+          </div>
+          <div class="form-group">
+            <label for="group" class="control-label">Выбери группу:</label>
+            <select name="input_group_id"  class="form-control" id="group_id">
+              @foreach($groups as $group)
+                <option value="{{ $group->id }}">{{ $group->name }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name" class="control-label">Attr name:</label>
+            <input type="text" name="name" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="input_type_code" class="control-label">Выбери тип:</label>
+            <select name="input_type_code"  class="form-control" id="input_type_code">
+              @foreach($typeOptions as $typeOption)
+                <option value="{{ $typeOption->code }}">{{ $typeOption->name }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="group_option_id" class="control-label">Выбери группу select:</label>
+            <select name="group_option_id"  class="form-control" id="group_option_id">
+              @foreach($optionGroups as $optionGroup)
+                <option value="{{ $optionGroup->id }}">{{ $optionGroup->name }}</option>
+              @endforeach
+            </select>
           </div>
         </div>
         <div class="modal-footer">

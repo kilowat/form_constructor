@@ -11,48 +11,106 @@
 |
 */
 
-Route::get('/input-group',[
-    'uses' => 'GroupInputController@index',
-    'as' => 'inputGroup.index'
-]);
-Route::get('/input-group/show/{id}', [
-    'uses' => 'GroupInputController@shoe',
-    'as' => 'inputGroup.show'
-]);
-Route::get('/input-group/edit/{id}', [
-    'uses' => 'GroupInputController@edit',
-    'as' => 'inputGroup.edit'
-]);
-Route::post('/input-group/update', [
-    'uses' => 'GroupInputController@update',
-    'as' => 'inputGroup.update'
-]);
-Route::post('/input-group/store',[
-    'uses' => 'GroupInputController@store',
-    'as' => 'inputGroup.store'
-]);
+Route::group(['prefix' => 'input-group'], function(){
 
-Route::get('/inputs', [
-    'uses' => 'InputController@index',
-    'as' => 'input.index'
-]);
+    Route::get('/',[
+        'uses' => 'GroupInputController@index',
+        'as' => 'inputGroup.index'
+    ]);
 
-Route::post('/form/store',[
-    'uses' => 'FormController@store',
-    'as' => 'form.store'
-]);
-Route::get('/form/show/{id}', [
-    'uses' => 'FormController@show',
-    'as' => 'form.show',
-]);
-Route::get('/form/edit/{id}', [
-    'uses' => 'FormController@edit',
-    'as' => 'form.edit',
-]);
-Route::post('/form/update}', [
-    'uses' => 'FormController@update',
-    'as' => 'form.update',
-]);
+    Route::get('show/{id}', [
+        'uses' => 'GroupInputController@shoe',
+        'as' => 'inputGroup.show'
+    ]);
+
+    Route::get('edit/{id}', [
+        'uses' => 'GroupInputController@edit',
+        'as' => 'inputGroup.edit'
+    ]);
+
+    Route::post('update', [
+        'uses' => 'GroupInputController@update',
+        'as' => 'inputGroup.update'
+    ]);
+
+    Route::post('store',[
+        'uses' => 'GroupInputController@store',
+        'as' => 'inputGroup.store'
+    ]);
+});
+
+Route::group(['prefix' => 'inputs'], function(){
+
+    Route::get('/', [
+        'uses' => 'InputController@index',
+        'as' => 'input.index'
+    ]);
+
+    Route::post('store',[
+        'uses' => 'InputController@store',
+        'as' => 'input.store'
+    ]);
+
+    Route::get('edit/{id}',[
+        'uses' => 'InputController@edit',
+        'as' => 'input.edit'
+    ]);
+
+    Route::post('update', [
+        'uses' => 'InputController@update',
+        'as' => 'input.update'
+    ]);
+});
+
+
+
+Route::group(['prefix' => 'form'], function(){
+
+    Route::post('store',[
+        'uses' => 'FormController@store',
+        'as' => 'form.store'
+    ]);
+
+    Route::get('show/{id}', [
+        'uses' => 'FormController@show',
+        'as' => 'form.show',
+    ]);
+
+    Route::get('edit/{id}', [
+        'uses' => 'FormController@edit',
+        'as' => 'form.edit',
+    ]);
+
+    Route::post('update', [
+        'uses' => 'FormController@update',
+        'as' => 'form.update',
+    ]);
+});
+
+Route::group(['prefix' => 'options'], function(){
+
+    Route::get('/',[
+        'uses' => 'OptionController@index',
+        'as' => 'option.index',
+    ]);
+
+    Route::post('store', [
+        'uses' => 'OptionController@store',
+        'as' => 'option.store',
+    ]);
+
+    Route::get('edit/{id}', [
+        'uses' => 'OptionController@edit',
+        'as' => 'option.edit',
+    ]);
+
+    Route::post('update', [
+        'uses' => 'OptionController@update',
+        'as' => 'option.update'
+    ]);
+
+});
+
 Route::get('/', [
     'uses' => 'FormController@index',
     'as' => 'form.index',

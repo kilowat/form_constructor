@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-12">
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#form-add">
-        Добавить форму
+        Добавить option
       </button>
     </div>
   </div>
@@ -22,6 +22,7 @@
           <tr>
             <th>id</th>
             <th>Название</th>
+            <th>Группа</th>
             <th>Действие</th>
           </tr>
           </thead>
@@ -30,9 +31,9 @@
           <tr>
             <th>{{ $form->id }}</th>
             <td>{{ $form->name }}</td>
+            <td>{{ $form->group->name }}</td>
             <td>
-              <span><a href="{{ route('form.show', $form->id) }}">Открыть</a></span> |
-              <span><a href="{{ route('form.edit', $form->id) }}">Редактировать</a></span> |
+              <span><a href="{{ route('option.edit', $form->id) }}">Редактировать</a></span> |
               <span><a href="">Удалить</a></span>
             </td>
           </tr>
@@ -49,9 +50,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="exampleModalLabel">Добавить инпут</h4>
+          <h4 class="modal-title" id="exampleModalLabel">Добавить option</h4>
         </div>
-        <form action="{{ route('form.store') }}" method="post">
+        <form action="{{ route('option.store') }}" method="post">
           {{ csrf_field() }}
         <div class="modal-body">
           <div class="form-group">
@@ -59,10 +60,14 @@
             <input type="text" name="name" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
-            <label for="group" class="control-label">Выбери группы:</label>
-            <select name="group_id[]"  class="form-control" id="group_id" multiple="multiple">
+            <label for="value" class="control-label">value:</label>
+            <input type="text" name="value" class="form-control" id="value">
+          </div>
+          <div class="form-group">
+            <label for="group" class="control-label">Выбери группу:</label>
+            <select name="group_option_id" id="group_option_id" class="form-control">
               @foreach($groups as $group)
-              <option value="{{ $group->id }}">{{ $group->name }}</option>
+                <option value="{{ $group->id }}">{{ $group->name }}</option>
               @endforeach
             </select>
           </div>

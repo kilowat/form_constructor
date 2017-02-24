@@ -34,7 +34,7 @@ class TopMenuComposer
             ],
             [
                 'text' => 'Справочник options',
-                'link' => '#',
+                'link' => route('option.index'),
                 'selected' => false,
             ]
 
