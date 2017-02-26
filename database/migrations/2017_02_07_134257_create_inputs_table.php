@@ -17,6 +17,7 @@ class CreateInputsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('label');
+            $table->integer('sort')->default(100);
 
             $table->unsignedInteger('input_group_id');
             $table->foreign('input_group_id')

@@ -39,9 +39,19 @@ class FormController extends Controller
     public function show($id, Input $inputs)
     {
         $title = Forms::find($id)->name;
-        $groupIds = FormHasInputGroup::where('forms_id', '=', $id)->get(['input_group_id'])->toArray();
+
+        $groupIds = FormHasInputGroup::where('forms_id', '=', $id)
+            ->get(['input_group_id'])
+            ->toArray();
+
         $groupIds = !empty($groupIds) ? $groupIds : [0];
-        $nodes = InputGroup::whereIn('id',$groupIds)->with('inputs')->get();
+
+        $nodes = InputGroup::whereIn('id',$groupIds)
+            ->with(['inputs' => function($query){
+                $query->orderBy('sort', 'asc');
+            }])
+            ->orderBy('sort', 'asc')
+            ->get();
 
         return view('form_app.form.show', compact('nodes', 'title'));
     }

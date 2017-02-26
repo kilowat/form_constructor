@@ -24,6 +24,7 @@
             <th>Название</th>
             <th>value</th>
             <th>Группа</th>
+            <th>Sort</th>
             <th>Тип</th>
             <th>Действие</th>
           </tr>
@@ -35,6 +36,7 @@
             <td>{{ $form->label }}</td>
             <td>{{ $form->name }}</td>
             <td>{{ $form->group->name }}</td>
+            <td>{{ $form->sort }}</td>
             <td>{{ $form->input_type_code }}</td>
             <td>
               <span><a href="{{ route('input.edit', $form->id) }}">Редактировать</a></span> |
@@ -74,6 +76,10 @@
           <div class="form-group">
             <label for="name" class="control-label">Attr name:</label>
             <input type="text" name="name" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="sort" class="control-label">sort:</label>
+            <input type="text" name="sort" value="100" class="form-control" id="sort">
           </div>
           <div class="form-group">
             <label for="input_type_code" class="control-label">Выбери тип:</label>

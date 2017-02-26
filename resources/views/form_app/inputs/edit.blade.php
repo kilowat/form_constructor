@@ -17,6 +17,10 @@
         <input type="text" name="label" value="{{ $form->label }}" class="form-control" id="label">
       </div>
       <div class="form-group">
+        <label for="sort" class="control-label">sort:</label>
+        <input type="text" name="sort" value="{{ $form->sort }}" class="form-control" id="sort">
+      </div>
+      <div class="form-group">
         <label for="group" class="control-label">Выбери группу:</label>
         <select name="input_group_id"  class="form-control" id="group_id">
           @foreach($groups as $group)
