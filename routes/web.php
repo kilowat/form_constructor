@@ -85,6 +85,11 @@ Route::group(['prefix' => 'form'], function(){
         'uses' => 'FormController@update',
         'as' => 'form.update',
     ]);
+
+    Route::get('showJson/{id}',[
+        'uses' => 'FormController@showJson',
+        'as' => 'form.showJson',
+    ]);
 });
 
 Route::group(['prefix' => 'options'], function(){

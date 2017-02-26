@@ -108,4 +108,23 @@ class FormController extends Controller
 
         return redirect()->back()->with('message', 'Сохранено');
     }
+
+    public function showJson($id, Input $inputs)
+    {
+
+        $groupIds = FormHasInputGroup::where('forms_id', '=', $id)
+            ->get(['input_group_id'])
+            ->toArray();
+
+        $groupIds = !empty($groupIds) ? $groupIds : [0];
+
+        $nodes = InputGroup::whereIn('id',$groupIds)
+            ->with(['inputs' => function($query){
+                $query->orderBy('sort', 'asc');
+            }])
+            ->orderBy('sort', 'asc')
+            ->get();
+
+        return response()->json($nodes);
+    }
 }
